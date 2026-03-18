@@ -4,12 +4,9 @@ import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone
 const Logo = () => (
   <div className="flex items-center gap-0">
     <div className="w-24 h-24 flex-shrink-0 -mr-3">
-      <video
-        src="/video_complexti_2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+      <img
+        src="/logo_icon.png"
+        alt="Complexti"
         className="w-full h-full object-contain"
       />
     </div>
