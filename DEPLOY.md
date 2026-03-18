@@ -14,8 +14,9 @@ Documentação completa para publicar o projeto em uma VPS Ubuntu com PM2, Nginx
 6. [Configurar o Nginx](#6-configurar-o-nginx)
 7. [SSL gratuito com Let's Encrypt](#7-ssl-gratuito-com-lets-encrypt)
 8. [Atualizar o projeto](#8-atualizar-o-projeto)
-9. [Comandos úteis](#9-comandos-úteis)
-10. [Solução de problemas](#10-solução-de-problemas)
+9. [Publicar uma correção](#9-publicar-uma-correção)
+10. [Comandos úteis](#10-comandos-úteis)
+11. [Solução de problemas](#11-solução-de-problemas)
 
 ---
 
@@ -337,7 +338,38 @@ Para atualizar, basta rodar na VPS:
 
 ---
 
-## 9. Comandos úteis
+## 9. Publicar uma correção
+
+Sempre que fizer qualquer correção ou ajuste no código, siga este fluxo:
+
+### Na sua máquina local
+
+```bash
+git add .
+git commit -m "fix: descrição da correção"
+git push origin main
+```
+
+### Na VPS
+
+```bash
+cd /var/www/complexti-landing
+git pull origin main
+npm run build
+pm2 restart complexti-landing
+```
+
+### Ou usando o script de deploy (se criou o deploy.sh)
+
+```bash
+/var/www/complexti-landing/deploy.sh
+```
+
+> O Nginx **não precisa reiniciar**. Apenas o PM2 precisa ser reiniciado para carregar o novo `dist/`.
+
+---
+
+## 10. Comandos úteis
 
 ### PM2
 
@@ -369,7 +401,7 @@ Para atualizar, basta rodar na VPS:
 
 ---
 
-## 10. Solução de problemas
+## 11. Solução de problemas
 
 ### Site não abre pelo domínio
 
