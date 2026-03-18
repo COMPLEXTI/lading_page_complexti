@@ -395,7 +395,7 @@ const Contact = () => (
 );
 
 const Footer = () => (
-  <footer className="bg-slate-950 py-8 border-t border-slate-900">
+  <footer className="bg-slate-900 py-8 border-t border-slate-800">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <Logo />
       <p className="text-slate-500 text-sm text-center md:text-left">
