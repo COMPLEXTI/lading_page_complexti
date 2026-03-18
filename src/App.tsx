@@ -66,10 +66,7 @@ const Hero = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 mb-6">
-          <span className="flex h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-xs font-medium text-slate-300">Inovação em Tecnologia</span>
-        </div>
+       
         <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
           Transformamos <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
