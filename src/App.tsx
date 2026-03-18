@@ -98,15 +98,7 @@ const Hero = () => (
 
     <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 bg-green-400/10 border border-green-400/20 text-green-400 text-xs font-semibold px-4 py-2 rounded-full mb-6"
-        >
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Consultoria & Desenvolvimento em TI
-        </motion.div>
+       
         <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
           Transformamos <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
