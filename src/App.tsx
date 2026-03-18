@@ -3,26 +3,12 @@ import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone
 
 const Logo = () => (
   <div className="flex items-center gap-2">
-    <div className="relative w-10 h-10 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full">
-        <defs>
-          <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0ea5e9" />
-            <stop offset="100%" stopColor="#a855f7" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M 75 25 A 35 35 0 1 0 75 75"
-          fill="none"
-          stroke="url(#logo-grad)"
-          strokeWidth="12"
-          strokeLinecap="round"
-        />
-        <circle cx="75" cy="25" r="8" fill="#0ea5e9" />
-        <circle cx="75" cy="75" r="8" fill="#a855f7" />
-        <circle cx="25" cy="50" r="8" fill="#6366f1" />
-        <path d="M 25 50 L 75 25 M 25 50 L 75 75" stroke="url(#logo-grad)" strokeWidth="3" strokeDasharray="4 4" />
-      </svg>
+    <div className="w-24 h-24 flex-shrink-0">
+      <img
+        src="/logo_icon.png"
+        alt="Complexti"
+        className="w-full h-full object-contain"
+      />
     </div>
     <div className="flex flex-col">
       <span className="text-2xl font-black tracking-tighter leading-none text-white">COMPLEXTI</span>
