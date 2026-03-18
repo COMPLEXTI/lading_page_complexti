@@ -364,7 +364,7 @@ const Contact = () => (
               <div>
                 <h4 className="text-white font-bold mb-1">E-mail</h4>
                 <a href="mailto:desenvolvimento@msconsultoriati.com" className="text-slate-400 hover:text-green-400 transition-colors">
-                  desenvolvimento@msconsultoriati.com
+                  desenvolvimento@complexti.com.br
                 </a>
               </div>
             </div>
