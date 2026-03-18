@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap } from 'lucide-react';
 
 const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="w-24 h-24 flex-shrink-0">
+  <div className="flex items-center gap-0">
+    <div className="w-24 h-24 flex-shrink-0 -mr-3">
       <img
         src="/logo_icon.png"
         alt="Complexti"
