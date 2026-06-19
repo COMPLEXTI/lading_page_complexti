@@ -330,7 +330,7 @@ const Projects = () => (
             </p>
 
             <div className="flex flex-wrap gap-2 mb-8">
-              {['Flutter', 'Mobile', 'SaaS', 'Portaria', 'Financeiro'].map(tag => (
+              {['Mobile', 'SaaS', 'Portaria', 'Financeiro'].map(tag => (
                 <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">{tag}</span>
               ))}
             </div>
