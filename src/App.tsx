@@ -258,7 +258,7 @@ const Services = () => (
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { icon: Smartphone, title: 'Mobile', desc: 'Desenvolvimento de aplicativos nativos e híbridos (Flutter) para iOS e Android.', color: 'from-blue-500/20 to-blue-600/5', glow: 'group-hover:shadow-blue-500/20', border: 'group-hover:border-blue-500/50', iconColor: 'text-blue-400', iconBg: 'bg-blue-500/10' },
+          { icon: Smartphone, title: 'Mobile', desc: 'Desenvolvimento de aplicativos nativos e híbridos para iOS e Android.', color: 'from-blue-500/20 to-blue-600/5', glow: 'group-hover:shadow-blue-500/20', border: 'group-hover:border-blue-500/50', iconColor: 'text-blue-400', iconBg: 'bg-blue-500/10' },
           { icon: Code, title: 'Web', desc: 'Sistemas web complexos, portais e landing pages de alta performance.', color: 'from-green-500/20 to-green-600/5', glow: 'group-hover:shadow-green-500/20', border: 'group-hover:border-green-500/50', iconColor: 'text-green-400', iconBg: 'bg-green-500/10' },
           { icon: PenTool, title: 'UI/UX Design', desc: 'Interfaces modernas e intuitivas focadas na experiência do usuário.', color: 'from-purple-500/20 to-purple-600/5', glow: 'group-hover:shadow-purple-500/20', border: 'group-hover:border-purple-500/50', iconColor: 'text-purple-400', iconBg: 'bg-purple-500/10' },
           { icon: Users, title: 'Consultoria', desc: 'Estratégia de TI, arquitetura de software e transformação digital.', color: 'from-cyan-500/20 to-cyan-600/5', glow: 'group-hover:shadow-cyan-500/20', border: 'group-hover:border-cyan-500/50', iconColor: 'text-cyan-400', iconBg: 'bg-cyan-500/10' },
