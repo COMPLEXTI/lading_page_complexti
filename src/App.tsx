@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring } from 'motion/react';
-import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package } from 'lucide-react';
 
 /* ── Logo ── */
 const Logo = () => (
@@ -58,7 +58,7 @@ const Navbar = () => (
     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <Logo />
       <div className="hidden md:flex items-center gap-8">
-        {['sobre', 'servicos', 'metodologia', 'contato'].map(s => (
+        {['sobre', 'servicos', 'projetos', 'metodologia', 'contato'].map(s => (
           <a key={s} href={`#${s}`}
             className="text-sm font-medium text-slate-300 hover:text-green-400 transition-colors capitalize relative group">
             {s === 'servicos' ? 'Serviços' : s.charAt(0).toUpperCase() + s.slice(1)}
@@ -285,6 +285,228 @@ const Services = () => (
   </section>
 );
 
+/* ── Projects ── */
+const Projects = () => (
+  <section id="projetos" className="py-24 bg-slate-950 relative overflow-hidden">
+    <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2" />
+    <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center max-w-3xl mx-auto mb-16"
+      >
+        <h2 className="text-green-400 font-bold tracking-wider uppercase text-sm mb-2">Nossos Produtos</h2>
+        <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">Soluções que desenvolvemos</h3>
+        <p className="text-lg text-slate-400">
+          Produtos SaaS criados pela COMPLEXTI, com design moderno e tecnologia de ponta para resolver problemas reais.
+        </p>
+      </motion.div>
+
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* Condomínio Fácil */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-500"
+        >
+          <div className="p-8 pb-0">
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
+                  <Building2 className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-slate-900">Condomínio Fácil</h4>
+                  <p className="text-sm text-blue-600 font-medium">Gestão de Condomínio Inteligente</p>
+                </div>
+              </div>
+              <span className="shrink-0 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">
+                +500 condomínios
+              </span>
+            </div>
+
+            <p className="text-slate-600 leading-relaxed mb-6">
+              Centralize comunicação, aumente a segurança e reduza a inadimplência. Conecta síndicos, portaria e moradores em um único aplicativo mobile.
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['Flutter', 'Mobile', 'SaaS', 'Portaria', 'Financeiro'].map(tag => (
+                <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative px-8 pb-8">
+            <div className="relative mx-auto max-w-[260px]">
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-400/20 to-cyan-400/10 rounded-[2.5rem] blur-xl" />
+              <div className="relative bg-slate-900 rounded-[2rem] p-2 shadow-2xl border-4 border-slate-800">
+                <div className="bg-white rounded-[1.5rem] overflow-hidden">
+                  <div className="bg-blue-700 px-4 py-3 flex items-center justify-between">
+                    <span className="text-white text-xs font-semibold">Condomínio Fácil</span>
+                    <span className="w-6 h-6 rounded-full bg-white/20 text-white text-[10px] flex items-center justify-center">9</span>
+                  </div>
+                  <div className="p-3 space-y-2 bg-slate-50">
+                    <p className="text-[10px] font-bold text-slate-800">Olá, Síndico!</p>
+                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-2">
+                      <p className="text-[8px] font-semibold text-blue-700">Fake News</p>
+                      <p className="text-[7px] text-slate-500 leading-tight mt-0.5">Aviso importante da administração</p>
+                    </div>
+                    <div className="bg-red-50 border border-red-100 rounded-lg p-2">
+                      <p className="text-[8px] font-semibold text-red-600">Atenção</p>
+                      <p className="text-[7px] text-slate-500 leading-tight mt-0.5">1 morador inadimplente · R$ 5.000</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {[
+                        { icon: Shield, label: 'Portão', color: 'text-blue-600 bg-blue-50' },
+                        { icon: Package, label: 'Encomendas', color: 'text-emerald-600 bg-emerald-50' },
+                      ].map(item => (
+                        <div key={item.label} className={`rounded-lg p-2 flex flex-col items-center gap-1 ${item.color}`}>
+                          <item.icon className="w-3 h-3" />
+                          <span className="text-[7px] font-semibold">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <motion.div
+                animate={{ y: [-4, 4, -4] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -right-6 top-8 bg-white rounded-xl px-2.5 py-1.5 shadow-lg border border-slate-100 flex items-center gap-1.5"
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-[9px] font-semibold text-slate-700">Portão Fechado</span>
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [4, -4, 4] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -left-4 bottom-16 bg-white rounded-xl px-2.5 py-1.5 shadow-lg border border-slate-100 flex items-center gap-1.5"
+              >
+                <Package className="w-3 h-3 text-blue-600" />
+                <span className="text-[9px] font-semibold text-slate-700">Encomenda Chegou</span>
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="px-8 pb-8">
+            <a
+              href="https://condominiofacil.complexti.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-700/25 group/link"
+            >
+              Visitar Condomínio Fácil
+              <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+        </motion.article>
+
+        {/* LensyTrack */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="group relative bg-[#0c0f14] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-500/5 hover:shadow-amber-500/15 hover:border-amber-500/30 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(245,158,11,0.08),_transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(99,102,241,0.06),_transparent_50%)]" />
+
+          <div className="relative p-8 pb-0">
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/30">
+                  <BarChart3 className="w-6 h-6 text-slate-900" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">LensyTrack</h4>
+                  <p className="text-sm text-amber-400 font-medium">Uso e custos de IA em equipes</p>
+                </div>
+              </div>
+              <span className="shrink-0 px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold border border-amber-500/20 flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> SaaS B2B
+              </span>
+            </div>
+
+            <p className="text-slate-400 leading-relaxed mb-6">
+              Monitore uso de IA, consumo de tokens e custos de API em projetos de software. Dashboards para OpenAI, Anthropic, Copilot, GitHub e mais.
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['React', 'Node.js', 'PostgreSQL', 'IA Analytics', 'SaaS'].map(tag => (
+                <span key={tag} className="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-medium border border-slate-700">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative px-8 pb-8">
+            <div className="relative rounded-2xl border border-slate-700/80 bg-slate-900/80 backdrop-blur-sm overflow-hidden shadow-xl">
+              <div className="px-4 py-2.5 border-b border-slate-700/60 flex items-center justify-between bg-slate-900/90">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="text-[10px] font-semibold text-slate-300 uppercase tracking-wider">Pulso de custo ao vivo</span>
+                </div>
+                <span className="text-[9px] text-slate-500">dashboard.preview</span>
+              </div>
+
+              <div className="p-4 grid grid-cols-3 gap-3">
+                {[
+                  { value: '2.4M', label: 'Tokens (30d)', accent: 'text-amber-400' },
+                  { value: '18.2k', label: 'Requisições', accent: 'text-white' },
+                  { value: '64%', label: 'Uso do orç.', accent: 'text-emerald-400' },
+                ].map(kpi => (
+                  <div key={kpi.label} className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 text-center">
+                    <p className={`text-lg font-bold ${kpi.accent}`}>{kpi.value}</p>
+                    <p className="text-[8px] text-slate-500 mt-0.5 uppercase tracking-wide">{kpi.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="px-4 pb-4">
+                <p className="text-[9px] text-slate-500 mb-2 uppercase tracking-wider">Sinais conectados</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['OpenAI', 'Anthropic', 'GitHub', 'GitLab', 'Jira', 'Cursor', 'Copilot'].map(provider => (
+                    <span key={provider} className="px-2 py-0.5 rounded-md bg-slate-800 text-[8px] text-slate-400 border border-slate-700/60">{provider}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="h-16 mx-4 mb-4 rounded-xl bg-gradient-to-t from-amber-500/10 to-transparent border border-amber-500/10 flex items-end px-3 pb-2 gap-1">
+                {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 rounded-t bg-gradient-to-t from-amber-600/60 to-amber-400/80"
+                    style={{ height: `${h}%` }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative px-8 pb-8">
+            <a
+              href="https://lensytrack.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-semibold rounded-xl hover:from-amber-300 hover:to-orange-400 transition-all shadow-lg shadow-amber-500/25 group/link"
+            >
+              Visitar LensyTrack
+              <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+        </motion.article>
+      </div>
+    </div>
+  </section>
+);
+
 /* ── Methodology ── */
 const Methodology = () => (
   <section id="metodologia" className="py-24 bg-slate-900 relative overflow-hidden">
@@ -478,6 +700,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <Projects />
         <Methodology />
         <Contact />
       </main>
