@@ -315,19 +315,14 @@ const Projects = () => (
           className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-500"
         >
           <div className="p-8 pb-0">
-            <div className="flex items-start justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
-                  <Building2 className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900">Condomínio Fácil</h4>
-                  <p className="text-sm text-blue-600 font-medium">Gestão de Condomínio Inteligente</p>
-                </div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
+                <Building2 className="w-6 h-6 text-white" />
               </div>
-              <span className="shrink-0 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">
-                +500 condomínios
-              </span>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900">Condomínio Fácil</h4>
+                <p className="text-sm text-blue-600 font-medium">Gestão de Condomínio Inteligente</p>
+              </div>
             </div>
 
             <p className="text-slate-600 leading-relaxed mb-6">
