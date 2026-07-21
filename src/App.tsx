@@ -1,5 +1,13 @@
 import { motion, useScroll, useSpring } from 'motion/react';
+import { useState, type FormEvent } from 'react';
 import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell } from 'lucide-react';
+
+const WHATSAPP_NUMBER = '5561996505995';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+const openWhatsApp = (text: string) => {
+  window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+};
 
 /* ── Logo ── */
 const Logo = () => (
@@ -93,7 +101,7 @@ const Hero = () => (
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="absolute -bottom-1/2 -left-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-green-500/20 to-emerald-500/20 blur-3xl"
       />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.15)_1px,transparent_0)] bg-[length:24px_24px] opacity-20" />
     </div>
 
     <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -682,7 +690,23 @@ const Methodology = () => (
 );
 
 /* ── Contact ── */
-const Contact = () => (
+const Contact = () => {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const parts = [
+      'Olá! Vim pelo site da Complexti.',
+      nome.trim() && `Nome: ${nome.trim()}`,
+      email.trim() && `E-mail: ${email.trim()}`,
+      mensagem.trim() && `\n${mensagem.trim()}`,
+    ].filter(Boolean);
+    openWhatsApp(parts.join('\n'));
+  };
+
+  return (
   <section id="contato" className="py-24 bg-slate-950">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-16">
@@ -698,7 +722,7 @@ const Contact = () => (
           <div className="space-y-8">
             {[
               { icon: Terminal, title: 'Empresa', content: 'COMPLEXTI CONSULTORIA E DESENVOLVIMENTO EM TECNOLOGIA DA INFORMAÇÃO LTDA', sub: 'CNPJ: 52.349.662/0001-75' },
-              { icon: Phone, title: 'Telefone', content: '(61) 9 9650 - 5995', sub: null },
+              { icon: Phone, title: 'WhatsApp', content: '(61) 9 9650 - 5995', sub: 'Resposta rápida pelo chat', href: WHATSAPP_URL },
               { icon: Mail, title: 'E-mail', content: 'desenvolvimento@complexti.com.br', sub: null, href: 'mailto:desenvolvimento@complexti.com.br' },
             ].map((item, i) => (
               <motion.div
@@ -715,7 +739,7 @@ const Contact = () => (
                 <div>
                   <h4 className="text-white font-bold mb-1">{item.title}</h4>
                   {item.href
-                    ? <a href={item.href} className="text-slate-400 hover:text-green-400 transition-colors">{item.content}</a>
+                    ? <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="text-slate-400 hover:text-green-400 transition-colors">{item.content}</a>
                     : <p className="text-slate-400">{item.content}</p>}
                   {item.sub && <p className="text-slate-500 text-sm mt-1">{item.sub}</p>}
                 </div>
@@ -731,34 +755,60 @@ const Contact = () => (
           transition={{ duration: 0.8 }}
           className="bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:border-slate-700 transition-colors"
         >
-          <h4 className="text-2xl font-bold text-white mb-6">Envie uma mensagem</h4>
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            {[
-              { label: 'Nome', type: 'text', placeholder: 'Seu nome completo' },
-              { label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
-            ].map((f) => (
-              <div key={f.label}>
-                <label className="block text-sm font-medium text-slate-400 mb-1">{f.label}</label>
-                <input type={f.type} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all" placeholder={f.placeholder} />
-              </div>
-            ))}
+          <h4 className="text-2xl font-bold text-white mb-2">Fale no WhatsApp</h4>
+          <p className="text-slate-400 text-sm mb-6">Preencha e envie — abrimos o WhatsApp com sua mensagem pronta.</p>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm font-medium text-slate-400 mb-1">Mensagem</label>
-              <textarea rows={4} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all resize-none" placeholder="Como podemos ajudar?" />
+              <label className="block text-sm font-medium text-slate-400 mb-1" htmlFor="contato-nome">Nome</label>
+              <input
+                id="contato-nome"
+                type="text"
+                required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                placeholder="Seu nome completo"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-1" htmlFor="contato-email">E-mail</label>
+              <input
+                id="contato-email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                placeholder="seu@email.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-1" htmlFor="contato-mensagem">Mensagem</label>
+              <textarea
+                id="contato-mensagem"
+                rows={4}
+                required
+                value={mensagem}
+                onChange={(e) => setMensagem(e.target.value)}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all resize-none"
+                placeholder="Como podemos ajudar?"
+              />
             </div>
             <motion.button
+              type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-green-400 text-slate-900 font-bold rounded-xl px-4 py-4 hover:bg-green-300 transition-colors mt-4 shadow-lg shadow-green-500/20"
             >
-              Enviar Mensagem
+              Enviar no WhatsApp
             </motion.button>
           </form>
         </motion.div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ── Footer ── */
 const Footer = () => (
