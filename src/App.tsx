@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring } from 'motion/react';
-import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell } from 'lucide-react';
 
 /* ── Logo ── */
 const Logo = () => (
@@ -290,6 +290,7 @@ const Projects = () => (
   <section id="projetos" className="py-24 bg-slate-950 relative overflow-hidden">
     <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2" />
     <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
 
     <div className="max-w-7xl mx-auto px-6 relative z-10">
       <motion.div
@@ -497,6 +498,92 @@ const Projects = () => (
             </a>
           </div>
         </motion.article>
+
+        {/* LicitaMonitor */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="group relative lg:col-span-2 bg-[#070b12] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-teal-500/5 hover:shadow-teal-500/15 hover:border-teal-500/30 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(45,212,191,0.1),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(34,211,238,0.06),_transparent_50%)]" />
+          <div
+            className="absolute inset-0 opacity-[0.07] pointer-events-none"
+            style={{
+              backgroundImage: 'radial-gradient(circle, #2dd4bf 1px, transparent 1px)',
+              backgroundSize: '28px 28px',
+            }}
+          />
+
+          <div className="relative grid lg:grid-cols-2 gap-8 p-8">
+            <div className="flex flex-col">
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-teal-500/30">
+                    <Radar className="w-6 h-6 text-slate-950" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold">
+                      <span className="text-teal-400">Licita</span>
+                      <span className="text-white">Monitor</span>
+                    </h4>
+                    <p className="text-sm text-teal-300/80 font-medium">Licitações públicas no radar</p>
+                  </div>
+                </div>
+                <span className="shrink-0 px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 text-xs font-semibold border border-teal-500/20 flex items-center gap-1">
+                  <Bell className="w-3 h-3" /> Alertas + IA
+                </span>
+              </div>
+
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Acompanha editais do Brasil em tempo real, avisa quando algo combina com o seu filtro e ajuda a analisar o objeto com IA — PNCP, alertas por e-mail e match por CNAE.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['SaaS', 'PNCP', 'IA', 'Alertas', 'React'].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-900 text-slate-400 text-xs font-medium border border-slate-700/80">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://licitamonitor.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-950 font-semibold rounded-xl hover:from-teal-300 hover:to-cyan-400 transition-all shadow-lg shadow-teal-500/25 group/link"
+              >
+                Visitar LicitaMonitor
+                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+
+            {/* Preview do site */}
+            <div className="relative">
+              <div className="absolute -inset-3 bg-gradient-to-br from-teal-400/15 to-cyan-400/5 rounded-3xl blur-xl" />
+              <a
+                href="https://licitamonitor.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block rounded-2xl border border-slate-700/80 overflow-hidden shadow-xl ring-1 ring-teal-500/10 hover:ring-teal-400/30 transition-all group/preview"
+              >
+                <div className="px-3 py-2 border-b border-slate-800 bg-slate-900/90 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[9px] text-slate-500 font-mono truncate">licitamonitor.complexti.com.br</span>
+                </div>
+                <img
+                  src="/projects/licitamonitor-preview.png"
+                  alt="Preview do painel LicitaMonitor"
+                  className="w-full h-auto object-cover object-top max-h-[320px] group-hover/preview:scale-[1.01] transition-transform duration-500"
+                />
+              </a>
+            </div>
+          </div>
+        </motion.article>
       </div>
     </div>
   </section>
@@ -611,7 +698,7 @@ const Contact = () => (
           <div className="space-y-8">
             {[
               { icon: Terminal, title: 'Empresa', content: 'COMPLEXTI CONSULTORIA E DESENVOLVIMENTO EM TECNOLOGIA DA INFORMAÇÃO LTDA', sub: 'CNPJ: 52.349.662/0001-75' },
-              { icon: Phone, title: 'Telefone', content: '(61) 9 9324 - 6547', sub: null },
+              { icon: Phone, title: 'Telefone', content: '(61) 9 9650 - 5995', sub: null },
               { icon: Mail, title: 'E-mail', content: 'desenvolvimento@complexti.com.br', sub: null, href: 'mailto:desenvolvimento@complexti.com.br' },
             ].map((item, i) => (
               <motion.div
