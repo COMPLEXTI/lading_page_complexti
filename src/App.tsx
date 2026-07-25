@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from 'motion/react';
+import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
 import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell } from 'lucide-react';
 
@@ -714,7 +714,7 @@ const Contact = () => {
       }
 
       setStatus('success');
-      setFeedback('Mensagem enviada com sucesso! Em breve retornamos o contato.');
+      setFeedback('');
       setNome('');
       setEmail('');
       setMensagem('');
@@ -723,6 +723,8 @@ const Contact = () => {
       setFeedback(err instanceof Error ? err.message : 'Não foi possível enviar a mensagem.');
     }
   };
+
+  const closeSuccessPopup = () => setStatus('idle');
 
   return (
   <section id="contato" className="py-24 bg-slate-950">
@@ -815,10 +817,8 @@ const Contact = () => {
                 placeholder="Como podemos ajudar?"
               />
             </div>
-            {feedback && (
-              <p className={`text-sm ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
-                {feedback}
-              </p>
+            {status === 'error' && feedback && (
+              <p className="text-sm text-red-400">{feedback}</p>
             )}
             <motion.button
               type="submit"
@@ -833,6 +833,49 @@ const Contact = () => {
         </motion.div>
       </div>
     </div>
+
+    <AnimatePresence>
+      {status === 'success' && (
+        <motion.div
+          className="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeSuccessPopup}
+        >
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contato-sucesso-titulo"
+            initial={{ opacity: 0, scale: 0.92, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 8 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+            className="relative w-full max-w-md rounded-3xl border border-slate-700 bg-slate-900 p-8 shadow-2xl shadow-green-500/10 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-400/15 border border-green-400/30">
+              <CheckCircle2 className="h-8 w-8 text-green-400" />
+            </div>
+            <h4 id="contato-sucesso-titulo" className="text-2xl font-bold text-white mb-3">
+              Mensagem enviada!
+            </h4>
+            <p className="text-slate-400 leading-relaxed mb-8">
+              Recebemos sua mensagem com sucesso. Nossa equipe entrará em contato em breve pelo e-mail informado.
+            </p>
+            <motion.button
+              type="button"
+              onClick={closeSuccessPopup}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full bg-green-400 text-slate-900 font-bold rounded-xl px-4 py-3.5 hover:bg-green-300 transition-colors shadow-lg shadow-green-500/20"
+            >
+              Fechar
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </section>
   );
 };
