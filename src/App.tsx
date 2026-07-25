@@ -2,12 +2,7 @@ import { motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
 import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '5561996505995';
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-
-const openWhatsApp = (text: string) => {
-  window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-};
+const CONTACT_EMAIL = 'desenvolvimento@complexti.com.br';
 
 /* ── Logo ── */
 const Logo = () => (
@@ -694,16 +689,39 @@ const Contact = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [feedback, setFeedback] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const parts = [
-      'Olá! Vim pelo site da Complexti.',
-      nome.trim() && `Nome: ${nome.trim()}`,
-      email.trim() && `E-mail: ${email.trim()}`,
-      mensagem.trim() && `\n${mensagem.trim()}`,
-    ].filter(Boolean);
-    openWhatsApp(parts.join('\n'));
+    setStatus('sending');
+    setFeedback('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: nome.trim(),
+          email: email.trim(),
+          mensagem: mensagem.trim(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'Não foi possível enviar a mensagem.');
+      }
+
+      setStatus('success');
+      setFeedback('Mensagem enviada com sucesso! Em breve retornamos o contato.');
+      setNome('');
+      setEmail('');
+      setMensagem('');
+    } catch (err) {
+      setStatus('error');
+      setFeedback(err instanceof Error ? err.message : 'Não foi possível enviar a mensagem.');
+    }
   };
 
   return (
@@ -722,8 +740,8 @@ const Contact = () => {
           <div className="space-y-8">
             {[
               { icon: Terminal, title: 'Empresa', content: 'COMPLEXTI CONSULTORIA E DESENVOLVIMENTO EM TECNOLOGIA DA INFORMAÇÃO LTDA', sub: 'CNPJ: 52.349.662/0001-75' },
-              { icon: Phone, title: 'WhatsApp', content: '(61) 9 9650 - 5995', sub: 'Resposta rápida pelo chat', href: WHATSAPP_URL },
-              { icon: Mail, title: 'E-mail', content: 'desenvolvimento@complexti.com.br', sub: null, href: 'mailto:desenvolvimento@complexti.com.br' },
+              { icon: Phone, title: 'Telefone', content: 'Em breve', sub: null },
+              { icon: Mail, title: 'E-mail', content: CONTACT_EMAIL, sub: null, href: `mailto:${CONTACT_EMAIL}` },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -739,7 +757,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-bold mb-1">{item.title}</h4>
                   {item.href
-                    ? <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="text-slate-400 hover:text-green-400 transition-colors">{item.content}</a>
+                    ? <a href={item.href} className="text-slate-400 hover:text-green-400 transition-colors">{item.content}</a>
                     : <p className="text-slate-400">{item.content}</p>}
                   {item.sub && <p className="text-slate-500 text-sm mt-1">{item.sub}</p>}
                 </div>
@@ -755,8 +773,8 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:border-slate-700 transition-colors"
         >
-          <h4 className="text-2xl font-bold text-white mb-2">Fale no WhatsApp</h4>
-          <p className="text-slate-400 text-sm mb-6">Preencha e envie — abrimos o WhatsApp com sua mensagem pronta.</p>
+          <h4 className="text-2xl font-bold text-white mb-2">Envie uma mensagem</h4>
+          <p className="text-slate-400 text-sm mb-6">Preencha o formulário e enviaremos a mensagem diretamente para nosso e-mail.</p>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-slate-400 mb-1" htmlFor="contato-nome">Nome</label>
@@ -764,9 +782,10 @@ const Contact = () => {
                 id="contato-nome"
                 type="text"
                 required
+                disabled={status === 'sending'}
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all disabled:opacity-60"
                 placeholder="Seu nome completo"
               />
             </div>
@@ -776,9 +795,10 @@ const Contact = () => {
                 id="contato-email"
                 type="email"
                 required
+                disabled={status === 'sending'}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all disabled:opacity-60"
                 placeholder="seu@email.com"
               />
             </div>
@@ -788,19 +808,26 @@ const Contact = () => {
                 id="contato-mensagem"
                 rows={4}
                 required
+                disabled={status === 'sending'}
                 value={mensagem}
                 onChange={(e) => setMensagem(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all resize-none"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all resize-none disabled:opacity-60"
                 placeholder="Como podemos ajudar?"
               />
             </div>
+            {feedback && (
+              <p className={`text-sm ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                {feedback}
+              </p>
+            )}
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-green-400 text-slate-900 font-bold rounded-xl px-4 py-4 hover:bg-green-300 transition-colors mt-4 shadow-lg shadow-green-500/20"
+              disabled={status === 'sending'}
+              whileHover={status === 'sending' ? undefined : { scale: 1.02 }}
+              whileTap={status === 'sending' ? undefined : { scale: 0.98 }}
+              className="w-full bg-green-400 text-slate-900 font-bold rounded-xl px-4 py-4 hover:bg-green-300 transition-colors mt-4 shadow-lg shadow-green-500/20 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Enviar no WhatsApp
+              {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
             </motion.button>
           </form>
         </motion.div>
