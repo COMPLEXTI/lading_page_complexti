@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
-import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors } from 'lucide-react';
 
 const CONTACT_EMAIL = 'desenvolvimento@complexti.com.br';
 
@@ -294,6 +294,7 @@ const Projects = () => (
     <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2" />
     <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
     <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#c99a45]/5 rounded-full blur-3xl" />
 
     <div className="max-w-7xl mx-auto px-6 relative z-10">
       <motion.div
@@ -581,6 +582,88 @@ const Projects = () => (
                 <img
                   src="/projects/licitamonitor-preview.png"
                   alt="Preview do painel LicitaMonitor"
+                  className="w-full h-auto object-cover object-top max-h-[320px] group-hover/preview:scale-[1.01] transition-transform duration-500"
+                />
+              </a>
+            </div>
+          </div>
+        </motion.article>
+
+        {/* Oh Point Barbearia */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="group relative lg:col-span-2 bg-[#0a0a0a] rounded-3xl overflow-hidden border border-neutral-800 shadow-2xl shadow-[#c99a45]/5 hover:shadow-[#c99a45]/15 hover:border-[#c99a45]/35 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(201,154,69,0.12),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(232,197,122,0.05),_transparent_50%)]" />
+          <div
+            className="absolute inset-0 opacity-[0.06] pointer-events-none"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(201,154,69,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(201,154,69,0.35) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+            }}
+          />
+
+          <div className="relative grid lg:grid-cols-2 gap-8 p-8">
+            <div className="flex flex-col">
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#e8c57a] to-[#c99a45] flex items-center justify-center shadow-lg shadow-[#c99a45]/30">
+                    <Scissors className="w-6 h-6 text-neutral-950" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white tracking-tight">Oh Point Barbearia</h4>
+                    <p className="text-sm text-[#e8c57a] font-medium">Agendamento & gestão</p>
+                  </div>
+                </div>
+                <span className="shrink-0 px-3 py-1 rounded-full bg-[#c99a45]/10 text-[#e8c57a] text-xs font-semibold border border-[#c99a45]/25 flex items-center gap-1">
+                  <Smartphone className="w-3 h-3" /> App + SaaS
+                </span>
+              </div>
+
+              <p className="text-neutral-400 leading-relaxed mb-6">
+                Agende cabelo e barba em quatro passos, pague no Pix pelo app, acumule pontos e receba lembretes. Para a barbearia, painel com agenda, faturamento e comissões em tempo real.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['Mobile', 'Agendamento', 'Pix', 'Fidelidade', 'Gestão'].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-neutral-900 text-neutral-400 text-xs font-medium border border-neutral-700/80">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://ohpoint.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-[#e8c57a] to-[#c99a45] text-neutral-950 font-semibold rounded-xl hover:from-[#f0d48a] hover:to-[#d4a84f] transition-all shadow-lg shadow-[#c99a45]/25 group/link"
+              >
+                Visitar Oh Point
+                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-3 bg-gradient-to-br from-[#c99a45]/20 to-[#e8c57a]/5 rounded-3xl blur-xl" />
+              <a
+                href="https://ohpoint.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block rounded-2xl border border-neutral-700/80 overflow-hidden shadow-xl ring-1 ring-[#c99a45]/15 hover:ring-[#c99a45]/40 transition-all group/preview"
+              >
+                <div className="px-3 py-2 border-b border-neutral-800 bg-neutral-950/90 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[9px] text-neutral-500 font-mono truncate">ohpoint.complexti.com.br</span>
+                </div>
+                <img
+                  src="/projects/ohpoint-preview.png"
+                  alt="Preview do site Oh Point Barbearia"
                   className="w-full h-auto object-cover object-top max-h-[320px] group-hover/preview:scale-[1.01] transition-transform duration-500"
                 />
               </a>
