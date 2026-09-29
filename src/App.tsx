@@ -589,7 +589,7 @@ const Projects = () => (
           </div>
         </motion.article>
 
-        {/* Oh Point Barbearia */}
+        {/* Fade Barbearia */}
         <motion.article
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -615,7 +615,7 @@ const Projects = () => (
                     <Scissors className="w-6 h-6 text-neutral-950" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-white tracking-tight">Oh Point Barbearia</h4>
+                    <h4 className="text-xl font-bold text-white tracking-tight">Fade</h4>
                     <p className="text-sm text-[#e8c57a] font-medium">Agendamento & gestão</p>
                   </div>
                 </div>
@@ -635,12 +635,12 @@ const Projects = () => (
               </div>
 
               <a
-                href="https://ohpoint.complexti.com.br/"
+                href="https://fadebarbearias.complexti.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-[#e8c57a] to-[#c99a45] text-neutral-950 font-semibold rounded-xl hover:from-[#f0d48a] hover:to-[#d4a84f] transition-all shadow-lg shadow-[#c99a45]/25 group/link"
               >
-                Visitar Oh Point
+                Visitar Fade
                 <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </a>
             </div>
@@ -648,7 +648,7 @@ const Projects = () => (
             <div className="relative">
               <div className="absolute -inset-3 bg-gradient-to-br from-[#c99a45]/20 to-[#e8c57a]/5 rounded-3xl blur-xl" />
               <a
-                href="https://ohpoint.complexti.com.br/"
+                href="https://fadebarbearias.complexti.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative block rounded-2xl border border-neutral-700/80 overflow-hidden shadow-xl ring-1 ring-[#c99a45]/15 hover:ring-[#c99a45]/40 transition-all group/preview"
@@ -659,11 +659,11 @@ const Projects = () => (
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="text-[9px] text-neutral-500 font-mono truncate">ohpoint.complexti.com.br</span>
+                  <span className="text-[9px] text-neutral-500 font-mono truncate">fadebarbearias.complexti.com.br</span>
                 </div>
                 <img
-                  src="/projects/ohpoint-preview.png"
-                  alt="Preview do site Oh Point Barbearia"
+                  src="/projects/fade-preview.png"
+                  alt="Preview do site Fade"
                   className="w-full h-auto object-cover object-top max-h-[320px] group-hover/preview:scale-[1.01] transition-transform duration-500"
                 />
               </a>
@@ -825,7 +825,7 @@ const Contact = () => {
           <div className="space-y-8">
             {[
               { icon: Terminal, title: 'Empresa', content: 'COMPLEXTI CONSULTORIA E DESENVOLVIMENTO EM TECNOLOGIA DA INFORMAÇÃO LTDA', sub: 'CNPJ: 52.349.662/0001-75' },
-              { icon: Phone, title: 'Telefone', content: 'Em breve', sub: null },
+              { icon: Phone, title: 'WhatsApp', content: '(61) 99368-8923', sub: null, href: 'https://wa.me/5561993688923' },
               { icon: Mail, title: 'E-mail', content: CONTACT_EMAIL, sub: null, href: `mailto:${CONTACT_EMAIL}` },
             ].map((item, i) => (
               <motion.div
