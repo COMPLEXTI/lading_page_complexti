@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
-import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors, Bot, MessageCircle } from 'lucide-react';
 
 const CONTACT_EMAIL = 'desenvolvimento@complexti.com.br';
 
@@ -311,6 +311,103 @@ const Projects = () => (
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-8">
+        {/* Automação com Agentes */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="group relative lg:col-span-2 bg-[#06100b] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-emerald-500/5 hover:shadow-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(16,185,129,0.1),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(34,197,94,0.06),_transparent_50%)]" />
+
+          <div className="relative grid lg:grid-cols-2 gap-8 p-8">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -inset-3 bg-gradient-to-br from-emerald-400/15 to-green-400/5 rounded-3xl blur-xl" />
+              <a
+                href="https://automacao.complexti.com.br/loja/ferragens-construcao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative flex flex-col h-full rounded-2xl border border-slate-700/80 overflow-hidden shadow-xl ring-1 ring-emerald-500/10 hover:ring-emerald-400/30 transition-all group/preview"
+              >
+                <div className="px-3 py-2 border-b border-slate-800 bg-slate-900/90 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[9px] text-slate-500 font-mono truncate">automacao.complexti.com.br</span>
+                </div>
+                <img
+                  src="/projects/automacao-preview.png"
+                  alt="Preview da loja operada por agentes de IA"
+                  className="w-full h-auto max-h-[320px] lg:max-h-none lg:flex-1 lg:min-h-0 object-cover object-left-top group-hover/preview:scale-[1.01] transition-transform duration-500"
+                />
+              </a>
+            </div>
+
+            <div className="flex flex-col order-1 lg:order-2">
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <Bot className="w-6 h-6 text-slate-950" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">Automação com Agentes</h4>
+                    <p className="text-sm text-emerald-300/80 font-medium">Do WhatsApp à entrega, operado por IA</p>
+                  </div>
+                </div>
+                <span className="shrink-0 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/20 flex items-center gap-1">
+                  <MessageCircle className="w-3 h-3" /> WhatsApp + IA
+                </span>
+              </div>
+
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Agentes de IA atendem no WhatsApp por texto, áudio ou foto, montam orçamentos com preço e estoque reais do ERP e acompanham o pedido até a entrega. Configurável por nicho — o primeiro é uma loja de material de construção.
+              </p>
+
+              <p className="text-slate-400 leading-relaxed mb-3">
+                São agentes que atuam em todas as áreas da sua empresa, por exemplo:
+              </p>
+
+              <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2 mb-6">
+                {[
+                  { area: 'Atendimento', desc: 'recebe e direciona cada cliente' },
+                  { area: 'Vendas', desc: 'fecha o pedido e reserva estoque' },
+                  { area: 'Financeiro', desc: 'cobra, confirma Pix e concilia' },
+                  { area: 'Estoque e compras', desc: 'evita ruptura e gera pedidos' },
+                  { area: 'Logística', desc: 'agenda e roteiriza entregas' },
+                  { area: 'Pós-venda', desc: 'coleta NPS e trata reclamações' },
+                  { area: 'Marketing', desc: 'cadastra produtos no site' },
+                  { area: 'Gestão', desc: 'envia KPIs e relatórios diários' },
+                ].map(item => (
+                  <li key={item.area} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-400"><span className="text-slate-200 font-medium">{item.area}:</span> {item.desc}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['Agentes IA', 'WhatsApp', 'Telegram', 'ERP', 'Next.js'].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-900 text-slate-400 text-xs font-medium border border-slate-700/80">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://automacao.complexti.com.br/loja/ferragens-construcao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-emerald-400 to-green-500 text-slate-950 font-semibold rounded-xl hover:from-emerald-300 hover:to-green-400 transition-all shadow-lg shadow-emerald-500/25 group/link"
+              >
+                Ver demonstração
+                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </motion.article>
+
         {/* Condomínio Fácil */}
         <motion.article
           initial={{ opacity: 0, y: 30 }}
