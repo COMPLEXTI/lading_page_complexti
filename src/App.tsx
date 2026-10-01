@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
-import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors, Bot, MessageCircle } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors, Bot, MessageCircle, Video, Send } from 'lucide-react';
 
 const CONTACT_EMAIL = 'desenvolvimento@complexti.com.br';
 
@@ -402,6 +402,186 @@ const Projects = () => (
                 className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-emerald-400 to-green-500 text-slate-950 font-semibold rounded-xl hover:from-emerald-300 hover:to-green-400 transition-all shadow-lg shadow-emerald-500/25 group/link"
               >
                 Ver demonstração
+                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </motion.article>
+
+        {/* Vidora */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="group relative lg:col-span-2 bg-[#05040c] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-violet-500/5 hover:shadow-violet-500/15 hover:border-violet-500/30 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(139,92,246,0.12),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(59,130,246,0.08),_transparent_50%)]" />
+
+          <div className="relative grid lg:grid-cols-2 gap-8 p-8">
+            <div className="flex flex-col">
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/30">
+                    <Video className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">Vidora<span className="text-violet-400">.</span></h4>
+                    <p className="text-sm text-violet-300/80 font-medium">Plataforma para criadores de conteúdo</p>
+                  </div>
+                </div>
+                <span className="shrink-0 px-3 py-1 rounded-full bg-violet-500/10 text-violet-300 text-xs font-semibold border border-violet-500/20 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> SaaS + IA
+                </span>
+              </div>
+
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Automatize YouTube, Instagram, Facebook e X com IA: crie roteiros e vídeos, publique em todas as redes a partir de um calendário único e automatize DMs. Ainda encontra novos clientes com prospecção no Google Maps, CRM de leads e anúncios prontos para o Meta.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['Vídeos com IA', 'Multicanal', 'Calendário', 'Prospecção', 'CRM'].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-900 text-slate-400 text-xs font-medium border border-slate-700/80">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://vidora.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-500 to-fuchsia-500 text-white font-semibold rounded-xl hover:from-blue-400 hover:to-fuchsia-400 transition-all shadow-lg shadow-violet-500/25 group/link"
+              >
+                Visitar Vidora
+                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-3 bg-gradient-to-br from-violet-500/15 to-blue-500/5 rounded-3xl blur-xl" />
+              <a
+                href="https://vidora.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block rounded-2xl border border-slate-700/80 overflow-hidden shadow-xl ring-1 ring-violet-500/10 hover:ring-violet-400/30 transition-all group/preview"
+              >
+                <div className="px-3 py-2 border-b border-slate-800 bg-slate-900/90 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[9px] text-slate-500 font-mono truncate">vidora.complexti.com.br</span>
+                </div>
+                <img
+                  src="/projects/vidora-preview.png"
+                  alt="Preview do site Vidora"
+                  className="w-full h-auto object-cover object-top max-h-[320px] group-hover/preview:scale-[1.01] transition-transform duration-500"
+                />
+              </a>
+            </div>
+          </div>
+        </motion.article>
+
+        {/* DisparoPro ZX */}
+        <motion.article
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="group relative lg:col-span-2 bg-[#081426] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-sky-500/5 hover:shadow-sky-500/15 hover:border-sky-500/30 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(56,189,248,0.1),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(37,99,235,0.08),_transparent_50%)]" />
+
+          <div className="relative grid lg:grid-cols-2 gap-8 p-8">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -inset-3 bg-gradient-to-br from-sky-400/15 to-blue-600/5 rounded-3xl blur-xl" />
+              <div className="relative rounded-2xl border border-slate-700/80 bg-slate-900/80 overflow-hidden shadow-xl">
+                <div className="px-4 py-2.5 border-b border-slate-700/60 flex items-center justify-between bg-[#1b3560]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-white/15 text-white text-[9px] font-bold flex items-center justify-center">ZX</span>
+                    <span className="text-[10px] font-semibold text-white">Campanhas ativas</span>
+                  </div>
+                  <span className="text-[9px] text-sky-200/70">3 conexões online</span>
+                </div>
+
+                <div className="p-4 grid grid-cols-3 gap-3">
+                  {[
+                    { value: '12.480', label: 'Enviadas hoje', accent: 'text-sky-300' },
+                    { value: '97,8%', label: 'Entregues', accent: 'text-emerald-400' },
+                    { value: '4', label: 'Campanhas', accent: 'text-white' },
+                  ].map(kpi => (
+                    <div key={kpi.label} className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 text-center">
+                      <p className={`text-lg font-bold ${kpi.accent}`}>{kpi.value}</p>
+                      <p className="text-[8px] text-slate-500 mt-0.5 uppercase tracking-wide">{kpi.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="px-4 pb-4 space-y-2.5">
+                  {[
+                    { name: 'Cobrança · Setembro', file: 'clientes_set.xlsx', pct: 82 },
+                    { name: 'Aviso de manutenção', file: 'regiao_norte.xlsx', pct: 54 },
+                    { name: 'Pesquisa de satisfação', file: 'base_nps.xlsx', pct: 23 },
+                  ].map(c => (
+                    <div key={c.name} className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[10px] font-semibold text-slate-200">{c.name}</span>
+                        <span className="text-[9px] text-sky-300 font-semibold">{c.pct}%</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-slate-700/70 overflow-hidden">
+                        <div className="h-full rounded-full bg-gradient-to-r from-sky-400 to-blue-500" style={{ width: `${c.pct}%` }} />
+                      </div>
+                      <p className="text-[8px] text-slate-500 mt-1.5 font-mono">{c.file}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <motion.div
+                animate={{ y: [-4, 4, -4] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -right-3 -bottom-4 max-w-[200px] bg-[#dcf8c6] rounded-xl rounded-br-sm px-3 py-2 shadow-lg"
+              >
+                <p className="text-[9px] text-slate-800 leading-snug">Olá, Maria! Sua fatura de setembro já está disponível. 😊</p>
+                <p className="text-[8px] text-slate-500 text-right mt-0.5">10:42 ✓✓</p>
+              </motion.div>
+            </div>
+
+            <div className="flex flex-col order-1 lg:order-2">
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center shadow-lg shadow-sky-500/30">
+                    <Send className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">DisparoPro <span className="text-sky-400">ZX</span></h4>
+                    <p className="text-sm text-sky-300/80 font-medium">Campanhas de WhatsApp em escala</p>
+                  </div>
+                </div>
+                <span className="shrink-0 px-3 py-1 rounded-full bg-sky-500/10 text-sky-300 text-xs font-semibold border border-sky-500/20 flex items-center gap-1">
+                  <MessageCircle className="w-3 h-3" /> WhatsApp
+                </span>
+              </div>
+
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Importe uma planilha, escolha o modelo de mensagem e dispare campanhas de WhatsApp para milhares de contatos. Envio distribuído entre várias conexões com intervalos inteligentes, templates oficiais da Meta, filas de processamento e relatórios de entrega por campanha.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['WhatsApp', 'Campanhas', 'Excel', 'Templates Meta', 'Relatórios'].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-900 text-slate-400 text-xs font-medium border border-slate-700/80">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://disparopro.zx.complexti.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 bg-gradient-to-r from-sky-400 to-blue-600 text-white font-semibold rounded-xl hover:from-sky-300 hover:to-blue-500 transition-all shadow-lg shadow-sky-500/25 group/link"
+              >
+                Acessar DisparoPro ZX
                 <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </a>
             </div>
