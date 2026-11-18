@@ -14,3 +14,12 @@ module.exports = {
     },
   ],
 };
+
+// MIGRACAO-USUARIO 2026-11-07: apps rodam como 'complexti' (nao root)
+for (const a of module.exports.apps) {
+  a.uid = "complexti";
+  a.gid = "complexti";
+  a.env = Object.assign({}, a.env, { HOME: "/var/lib/complexti" });
+  if (!a.error_file) a.error_file = "/opt/lading_page_complexti/logs/" + a.name + "-error.log";
+  if (!a.out_file) a.out_file = "/opt/lading_page_complexti/logs/" + a.name + "-out.log";
+}

@@ -1,12 +1,13 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { useState, type FormEvent } from 'react';
 import { ChevronRight, Code, Smartphone, PenTool, Users, ArrowRight, Mail, Phone, CheckCircle2, Terminal, Layers, Zap, Building2, BarChart3, ExternalLink, Sparkles, Shield, Package, Radar, Bell, Scissors, Bot, MessageCircle, Video, Send } from 'lucide-react';
+import PrivacyPolicy from './PrivacyPolicy';
 
 const CONTACT_EMAIL = 'desenvolvimento@complexti.com.br';
 
 /* ── Logo ── */
 const Logo = () => (
-  <div className="flex items-center gap-0">
+  <a href="/" className="flex items-center gap-0">
     <div className="w-24 h-24 flex-shrink-0 -mr-3">
       <img src="/logo_icon.png" alt="Complexti" className="w-full h-full object-contain" />
     </div>
@@ -14,7 +15,7 @@ const Logo = () => (
       <span className="text-2xl font-black tracking-tighter leading-none text-white">COMPLEXTI</span>
       <span className="text-[0.55rem] font-semibold tracking-widest uppercase text-slate-400 mt-0.5">Consultoria & Desenvolvimento</span>
     </div>
-  </div>
+  </a>
 );
 
 /* ── Barra de progresso de scroll ── */
@@ -1245,15 +1246,26 @@ const Footer = () => (
   <footer className="bg-slate-900 py-8 border-t border-slate-800">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <Logo />
-      <p className="text-slate-500 text-sm text-center md:text-left">
-        © {new Date().getFullYear()} COMPLEXTI. Todos os direitos reservados.
-      </p>
+      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+        <a href="/privacidade" className="text-slate-500 text-sm hover:text-green-400 transition-colors">
+          Política de Privacidade
+        </a>
+        <p className="text-slate-500 text-sm text-center md:text-left">
+          © {new Date().getFullYear()} COMPLEXTI. Todos os direitos reservados.
+        </p>
+      </div>
     </div>
   </footer>
 );
 
 /* ── App ── */
 export default function App() {
+  const isPrivacy = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '') === '/privacidade';
+
+  if (isPrivacy) {
+    return <PrivacyPolicy />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50 font-sans selection:bg-green-500/30">
       <ScrollProgress />
