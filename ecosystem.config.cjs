@@ -3,6 +3,8 @@ module.exports = {
     {
       name: 'complexti-landing',
       script: 'server.cjs',
+      interpreter: '/usr/bin/node',
+      exec_mode: 'fork',
       instances: 1,
       autorestart: true,
       watch: false,
