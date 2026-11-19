@@ -1250,6 +1250,12 @@ const Footer = () => (
         <a href="/privacidade" className="text-slate-500 text-sm hover:text-green-400 transition-colors">
           Política de Privacidade
         </a>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="text-slate-500 text-sm hover:text-green-400 transition-colors"
+        >
+          {CONTACT_EMAIL}
+        </a>
         <p className="text-slate-500 text-sm text-center md:text-left">
           © {new Date().getFullYear()} COMPLEXTI. Todos os direitos reservados.
         </p>
